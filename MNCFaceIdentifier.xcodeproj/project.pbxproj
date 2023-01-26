@@ -51,8 +51,8 @@
 		693BE4A42844AB0E004FA3E3 /* MNCFaceIdentifierResult.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MNCFaceIdentifierResult.m; sourceTree = "<group>"; };
 		69BE7D4C285994E100E985F6 /* MOIFaceModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MOIFaceModel.h; sourceTree = "<group>"; };
 		69BE7D4D285994E100E985F6 /* MOIFaceModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MOIFaceModel.m; sourceTree = "<group>"; };
-		E8A203C7C7953159B1D1DCB7 /* Pods-MNCFaceIdentifier.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MNCFaceIdentifier.release.xcconfig"; path = "../../ML Kit/Pods/Target Support Files/Pods-MNCFaceIdentifier/Pods-MNCFaceIdentifier.release.xcconfig"; sourceTree = "<group>"; };
-		F16A6C740086ECC0EF1F9AAF /* Pods-MNCFaceIdentifier.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MNCFaceIdentifier.debug.xcconfig"; path = "../../ML Kit/Pods/Target Support Files/Pods-MNCFaceIdentifier/Pods-MNCFaceIdentifier.debug.xcconfig"; sourceTree = "<group>"; };
+		E8A203C7C7953159B1D1DCB7 /* Pods-MNCFaceIdentifier.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MNCFaceIdentifier.release.xcconfig"; path = "Target Support Files/Pods-MNCFaceIdentifier/Pods-MNCFaceIdentifier.release.xcconfig"; sourceTree = "<group>"; };
+		F16A6C740086ECC0EF1F9AAF /* Pods-MNCFaceIdentifier.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MNCFaceIdentifier.debug.xcconfig"; path = "Target Support Files/Pods-MNCFaceIdentifier/Pods-MNCFaceIdentifier.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -217,6 +217,7 @@
 				693BE4742844A87A004FA3E3 /* Frameworks */,
 				693BE4752844A87A004FA3E3 /* Resources */,
 				E01FAD4D89F5C73848AA358D /* [CP] Copy Pods Resources */,
+				69EB352128895AEF004BC89B /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -271,6 +272,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		69EB352128895AEF004BC89B /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "";
+		};
 		E01FAD4D89F5C73848AA358D /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -382,7 +400,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -437,7 +455,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -451,6 +469,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = F16A6C740086ECC0EF1F9AAF /* Pods-MNCFaceIdentifier.debug.xcconfig */;
 			buildSettings = {
+				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
@@ -481,6 +500,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = E8A203C7C7953159B1D1DCB7 /* Pods-MNCFaceIdentifier.release.xcconfig */;
 			buildSettings = {
+				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;

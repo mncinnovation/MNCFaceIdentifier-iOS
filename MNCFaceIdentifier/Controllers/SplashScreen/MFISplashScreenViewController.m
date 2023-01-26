@@ -54,6 +54,7 @@
     
     UILabel *contentLabel = [[UILabel alloc] init];
     contentLabel.text = @"Face Recognition";
+    contentLabel.textColor = [UIColor blackColor];
     
     [contentLabel setFont:[UIFont boldSystemFontOfSize:36]];
     
@@ -75,6 +76,7 @@
     
     UILabel *footerLabel = [[UILabel alloc] init];
     footerLabel.text = @"Developed by : ";
+    footerLabel.textColor = [UIColor blackColor];
     [footerLabel setFont:[UIFont systemFontOfSize:12]];
     
     UIImage *footerImage = [UIImage imageNamed:@"icon_innocent" inBundle:bundle compatibleWithTraitCollection:nil];

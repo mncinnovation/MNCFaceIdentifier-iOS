@@ -6,6 +6,6 @@ target 'MNCFaceIdentifier' do
   use_frameworks!
 
   # Pods for MNCFaceIdentifier
-  pod 'GoogleMLKit/FaceDetection', '2.3.0'
+  pod 'GoogleMLKit/FaceDetection'
 
 end

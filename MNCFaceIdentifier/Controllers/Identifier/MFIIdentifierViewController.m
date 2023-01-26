@@ -41,7 +41,7 @@ typedef NS_ENUM(NSInteger, StepFace) {
 @property (nonatomic) StepFace stepFace;
 @property (nonatomic) UIView *previewView;
 @property (nonatomic) UIView *coordinateView;
-@property (nonatomic) UIView *faceView;
+@property (nonatomic) UIImageView *faceImageView;
 @property (nonatomic) UILabel *counterLabel;
 @property (nonatomic) UILabel *instructionLabel;
 @property (nonatomic) AVCaptureSession *capturesSession;
@@ -148,28 +148,16 @@ long totalTimeMillis = 0;
     CGFloat width = [UIScreen mainScreen].bounds.size.width;
     CGFloat widthFaceImageView = width - 72;
     CGFloat heightFaceImageView = (faceFrameHeightRatio * widthFaceImageView) / faceFrameWidthRatio;
-    
-    self.faceView = [[UIView alloc] init];
-    self.faceView.translatesAutoresizingMaskIntoConstraints = NO;
-    [self.view addSubview:self.faceView];
-    
-    [self.faceView.centerXAnchor constraintEqualToAnchor:self.view.centerXAnchor].active = YES;
-    [self.faceView.topAnchor constraintEqualToAnchor:self.view.safeAreaLayoutGuide.topAnchor constant:95].active = YES;
-    [self.faceView.widthAnchor constraintEqualToConstant:widthFaceImageView].active = YES;
-    [self.faceView.heightAnchor constraintEqualToConstant:heightFaceImageView].active = YES;
-    
+
     UIImage *faceImage = [UIImage imageNamed:@"image_face" inBundle:bundle compatibleWithTraitCollection:nil];
-    UIImageView *faceImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, widthFaceImageView, heightFaceImageView)];
-    faceImageView.image = faceImage;
-    [self.faceView addSubview:faceImageView];
-    
-    CAShapeLayer *yourViewBorder = [CAShapeLayer layer];
-    yourViewBorder.strokeColor = [UIColor whiteColor].CGColor;
-    yourViewBorder.fillColor = nil;
-    yourViewBorder.lineDashPattern = @[@10, @5];
-    yourViewBorder.frame = faceImageView.bounds;
-    yourViewBorder.path = [UIBezierPath bezierPathWithRect:faceImageView.bounds].CGPath;
-    [faceImageView.layer addSublayer:yourViewBorder];
+    self.faceImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, widthFaceImageView, heightFaceImageView)];
+    self.faceImageView.image = faceImage;
+    self.faceImageView.translatesAutoresizingMaskIntoConstraints = NO;
+    [self.view addSubview:self.faceImageView];
+    [self.faceImageView.centerXAnchor constraintEqualToAnchor:self.view.centerXAnchor].active = YES;
+    [self.faceImageView.topAnchor constraintEqualToAnchor:self.view.safeAreaLayoutGuide.topAnchor constant:95].active = YES;
+    [self.faceImageView.widthAnchor constraintEqualToConstant:widthFaceImageView].active = YES;
+    [self.faceImageView.heightAnchor constraintEqualToConstant:heightFaceImageView].active = YES;
     
     UIView *topTransparentView = [[UIView alloc] init];
     topTransparentView.backgroundColor = [UIColor blackColor];
@@ -179,14 +167,14 @@ long totalTimeMillis = 0;
     [topTransparentView.topAnchor constraintEqualToAnchor:self.view.topAnchor].active = YES;
     [topTransparentView.leftAnchor constraintEqualToAnchor:self.view.safeAreaLayoutGuide.leftAnchor].active = YES;
     [topTransparentView.rightAnchor constraintEqualToAnchor:self.view.safeAreaLayoutGuide.rightAnchor].active = YES;
-    [topTransparentView.bottomAnchor constraintEqualToAnchor:self.faceView.topAnchor].active = YES;
+    [topTransparentView.bottomAnchor constraintEqualToAnchor:self.faceImageView.topAnchor].active = YES;
     
     UIView *bottomTransparentView = [[UIView alloc] init];
     bottomTransparentView.backgroundColor = [UIColor blackColor];
     bottomTransparentView.alpha = 0.5;
     bottomTransparentView.translatesAutoresizingMaskIntoConstraints = NO;
     [self.view addSubview:bottomTransparentView];
-    [bottomTransparentView.topAnchor constraintEqualToAnchor:self.faceView.bottomAnchor].active = YES;
+    [bottomTransparentView.topAnchor constraintEqualToAnchor:self.faceImageView.bottomAnchor].active = YES;
     [bottomTransparentView.leftAnchor constraintEqualToAnchor:self.view.safeAreaLayoutGuide.leftAnchor].active = YES;
     [bottomTransparentView.rightAnchor constraintEqualToAnchor:self.view.safeAreaLayoutGuide.rightAnchor].active = YES;
     [bottomTransparentView.bottomAnchor constraintEqualToAnchor:self.view.bottomAnchor].active = YES;
@@ -198,7 +186,7 @@ long totalTimeMillis = 0;
     [self.view addSubview:leftTransparentView];
     [leftTransparentView.topAnchor constraintEqualToAnchor:topTransparentView.bottomAnchor].active = YES;
     [leftTransparentView.leftAnchor constraintEqualToAnchor:self.view.safeAreaLayoutGuide.leftAnchor].active = YES;
-    [leftTransparentView.rightAnchor constraintEqualToAnchor:self.faceView.leftAnchor].active = YES;
+    [leftTransparentView.rightAnchor constraintEqualToAnchor:self.faceImageView.leftAnchor].active = YES;
     [leftTransparentView.bottomAnchor constraintEqualToAnchor:bottomTransparentView.topAnchor].active = YES;
     
     UIView *rightTransparentView = [[UIView alloc] init];
@@ -207,7 +195,7 @@ long totalTimeMillis = 0;
     rightTransparentView.translatesAutoresizingMaskIntoConstraints = NO;
     [self.view addSubview:rightTransparentView];
     [rightTransparentView.topAnchor constraintEqualToAnchor:topTransparentView.bottomAnchor].active = YES;
-    [rightTransparentView.leftAnchor constraintEqualToAnchor:self.faceView.rightAnchor].active = YES;
+    [rightTransparentView.leftAnchor constraintEqualToAnchor:self.faceImageView.rightAnchor].active = YES;
     [rightTransparentView.rightAnchor constraintEqualToAnchor:self.view.safeAreaLayoutGuide.rightAnchor].active = YES;
     [rightTransparentView.bottomAnchor constraintEqualToAnchor:bottomTransparentView.topAnchor].active = YES;
     
@@ -219,8 +207,8 @@ long totalTimeMillis = 0;
     self.instructionLabel.numberOfLines = 0;
     self.instructionLabel.translatesAutoresizingMaskIntoConstraints = NO;
     [self.view addSubview:self.instructionLabel];
-    [self.instructionLabel.leftAnchor constraintEqualToAnchor:self.faceView.leftAnchor].active = YES;
-    [self.instructionLabel.rightAnchor constraintEqualToAnchor:self.faceView.rightAnchor].active = YES;
+    [self.instructionLabel.leftAnchor constraintEqualToAnchor:self.faceImageView.leftAnchor].active = YES;
+    [self.instructionLabel.rightAnchor constraintEqualToAnchor:self.faceImageView.rightAnchor].active = YES;
     [self.instructionLabel.bottomAnchor constraintEqualToAnchor:self.view.safeAreaLayoutGuide.bottomAnchor constant:-48].active = YES;
     
     self.counterLabel = [[UILabel alloc] init];
@@ -425,7 +413,7 @@ long totalTimeMillis = 0;
     CGRect normalizedRect = CGRectMake(face.frame.origin.x / width, face.frame.origin.y / height, face.frame.size.width / width, face.frame.size.height / height);
     CGRect standardizedRect = CGRectStandardize([self.videoPreviewLayer rectForMetadataOutputRectOfInterest:normalizedRect]);
     
-    self.comparationModel =  [MFIUtils getRectAccuration:standardizedRect byComparison:self.faceView.frame enableDot:NO viewForDot:self.coordinateView];
+    self.comparationModel =  [MFIUtils getRectAccuration:standardizedRect byComparison:self.faceImageView.frame enableDot:NO viewForDot:self.coordinateView];
     
     if (face.hasHeadEulerAngleX) {
         self.dataModel.rotX = face.headEulerAngleX;
@@ -450,6 +438,8 @@ long totalTimeMillis = 0;
     if (face.hasRightEyeOpenProbability) {
         self.dataModel.rightEyeProb = face.rightEyeOpenProbability;
     }
+    
+    NSLog(@"smile prob %f", face.smilingProbability);
     
     switch(self.stepFace) {
         case StepFaceInframe:

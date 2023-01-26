@@ -20,8 +20,8 @@
     NSMutableDictionary *dictionary = [NSMutableDictionary new];
     NSMutableArray *arrayDictionary = [NSMutableArray new];
     
-    for (MOIFaceModel *dick in _detectionResult) {
-        [arrayDictionary addObject:dick.dictionary];
+    for (MOIFaceModel *faceModel in _detectionResult) {
+        [arrayDictionary addObject:faceModel.dictionary];
     }
     
     [dictionary setObject:(self.errorMessage == nil) ? [NSNull null] : self.errorMessage forKey:@"errorMessage"];
